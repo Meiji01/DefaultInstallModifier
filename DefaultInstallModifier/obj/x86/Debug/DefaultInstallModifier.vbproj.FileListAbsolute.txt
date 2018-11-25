@@ -1,0 +1,9 @@
+D:\Products_Programs_Projects\DefaultInstallModifier\DefaultInstallModifier\bin\Debug\DefaultInstallModifier.exe
+D:\Products_Programs_Projects\DefaultInstallModifier\DefaultInstallModifier\bin\Debug\DefaultInstallModifier.pdb
+D:\Products_Programs_Projects\DefaultInstallModifier\DefaultInstallModifier\bin\Debug\DefaultInstallModifier.xml
+D:\Products_Programs_Projects\DefaultInstallModifier\DefaultInstallModifier\obj\x86\Debug\WindowsApplication1.Form1.resources
+D:\Products_Programs_Projects\DefaultInstallModifier\DefaultInstallModifier\obj\x86\Debug\WindowsApplication1.Resources.resources
+D:\Products_Programs_Projects\DefaultInstallModifier\DefaultInstallModifier\obj\x86\Debug\DefaultInstallModifier.vbproj.GenerateResource.Cache
+D:\Products_Programs_Projects\DefaultInstallModifier\DefaultInstallModifier\obj\x86\Debug\DefaultInstallModifier.exe
+D:\Products_Programs_Projects\DefaultInstallModifier\DefaultInstallModifier\obj\x86\Debug\DefaultInstallModifier.xml
+D:\Products_Programs_Projects\DefaultInstallModifier\DefaultInstallModifier\obj\x86\Debug\DefaultInstallModifier.pdb
