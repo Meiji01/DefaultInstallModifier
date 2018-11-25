@@ -63,13 +63,13 @@
             get64values = txtPath64.Text
             txtLogs.AppendText("Updating values..." & vbCrLf)
             If currentis64 = True Then
-                'My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion", "ProgramFilesDir (x86)", get86value)
-                My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\WDIFU", "progtest(x86)", get86value)
-                'My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion", "ProgramFilesDir", get64values)
-                My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\WDIFU", "progtest", get64values)
+                My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion", "ProgramFilesDir (x86)", get86value)
+                'My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\WDIFU", "progtest(x86)", get86value)
+                My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion", "ProgramFilesDir", get64values)
+                'My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\WDIFU", "progtest", get64values)
             Else
-                'My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion", "ProgramFilesDir", get86value)
-                My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\WDIFU", "progtest", get86value)
+                My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion", "ProgramFilesDir", get86value)
+                'My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\WDIFU", "progtest", get86value)
             End If
             txtLogs.AppendText("Update success..." & vbCrLf)
             Exit Sub
@@ -102,6 +102,7 @@ cnld:
         tmflash.Enabled = True
         Debug.Print("Loaded...")
         Debug.Print("Opacity: " & Me.Opacity)
+        txtLogs.AppendText("Now in github: https://github.com/Meiji01/DefaultInstallModifier" & vbCrLf)
         If checkbit() = True Then
             txtPath64.Enabled = True
             btnLocate64.Enabled = True
