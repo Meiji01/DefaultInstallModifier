@@ -1,4 +1,6 @@
-﻿Public Class Form1
+﻿Imports System.Security.Principal
+Public Class Form1
+
     Public currentis64 As Boolean
 
     Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
@@ -92,28 +94,53 @@ cnld:
                 txtLogs.AppendText("Windows is 64 Bit (amd64)" & vbCrLf)
             End If
             checkbit = bitTag
+            Return checkbit
         Catch ex As Exception
             txtLogs.AppendText(vbCrLf & "Fatal Error: " & ex.Message)
+            checkbit = Nothing
+            Return checkbit
         End Try
     End Function
 
+    Function checkadim() As Boolean
+        Dim identity = WindowsIdentity.GetCurrent()
+        Dim principal = New WindowsPrincipal(identity)
+        Dim isElevated As Boolean = principal.IsInRole(WindowsBuiltInRole.Administrator)
+        If isElevated = True Then
+            checkadim = True
+            Return checkadim
+        Else
+            checkadim = False
+            Return checkadim
+        End If
+    End Function
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         tmflash.Enabled = True
         Debug.Print("Loaded...")
         Debug.Print("Opacity: " & Me.Opacity)
         txtLogs.AppendText("Now in github: https://github.com/Meiji01/DefaultInstallModifier" & vbCrLf)
-        If checkbit() = True Then
-            txtPath64.Enabled = True
-            btnLocate64.Enabled = True
-            currentis64 = True
-            txtPath64.Text = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\", "ProgramFilesDir", Nothing)
-            txtPath.Text = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\", "ProgramFilesDir (x86)", "unavailable")
+        If checkadim() = True Then
+            If checkbit() = True Then
+                txtPath64.Enabled = True
+                btnLocate64.Enabled = True
+                currentis64 = True
+                txtPath64.Text = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\", "ProgramFilesDir", Nothing)
+                txtPath.Text = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\", "ProgramFilesDir (x86)", "unavailable")
+            Else
+                txtPath64.Enabled = False
+                btnLocate64.Enabled = False
+                currentis64 = False
+                txtPath.Text = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\", "ProgramFilesDir", Nothing)
+            End If
         Else
-            txtPath64.Enabled = False
+            txtLogs.AppendText("No administrator rights. Please open the application with Admin!" & vbCrLf)
             btnLocate64.Enabled = False
-            currentis64 = False
-            txtPath.Text = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\", "ProgramFilesDir", Nothing)
+            btnLocate.Enabled = False
+            btnChange.Enabled = False
+            btnClear.Enabled = False
+            btnWinRestore.Enabled = False
+            btnDefault.Enabled = False
         End If
     End Sub
 
