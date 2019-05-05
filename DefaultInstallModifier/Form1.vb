@@ -16,11 +16,28 @@ Public Class Form1
 
     Private Sub btnChange_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnChange.Click
         Dim proceed As MsgBoxResult
+        Dim eualaform As New frmdisclaim
+
+        'added end user agreement screen
+        eualaform.ShowDialog(Me)
+        If eualaform.rejected = True Then
+            GoTo cnld
+            Exit Sub
+        End If
+
         proceed = MsgBox("Microsoft does not support changing the location of the Program Files folder. It states that if you change the location of the Program Files folder, you may experience problems with some Microsoft programs or with some software updates. DO YOU WANT TO PROCEED?", vbYesNo, "Warning!")
         If proceed = vbNo Then
             GoTo cnld
             Exit Sub
         End If
+        Debug.Print("Proceed with changes")
+        Call call_changer()
+        Exit Sub
+cnld:
+        MsgBox("Cancelled!", vbOKOnly, "Cancelled!")
+    End Sub
+
+    Sub call_changer()
         Dim oldRegister As String
         Dim oldRegister2 As String
         'get previous value
@@ -74,12 +91,9 @@ Public Class Form1
                 'My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\WDIFU", "progtest", get86value)
             End If
             txtLogs.AppendText("Update success..." & vbCrLf)
-            Exit Sub
         Catch ex As Exception
             txtLogs.AppendText(vbCrLf & "With error: " & ex.Message)
         End Try
-cnld:
-        MsgBox("Cancelled!", vbOKOnly, "Cancelled!")
     End Sub
 
     Function checkbit() As Boolean
@@ -106,6 +120,8 @@ cnld:
         Dim identity = WindowsIdentity.GetCurrent()
         Dim principal = New WindowsPrincipal(identity)
         Dim isElevated As Boolean = principal.IsInRole(WindowsBuiltInRole.Administrator)
+        'Dim isElevated As Boolean = principal.IsInRole(WindowsBuiltInRole.PowerUser)
+        'isElevated = True 'for debug purposes, remove during release
         If isElevated = True Then
             checkadim = True
             Return checkadim
@@ -193,6 +209,18 @@ cnld:
         Else
             '    MsgBox("done")
             tmflash.Enabled = False
+        End If
+    End Sub
+
+    Private Sub btndebug_Click(sender As Object, e As EventArgs) Handles btndebug.Click
+        Dim diagform As New frmdisclaim
+        diagform.ShowDialog(Me)
+        If diagform.accepted = True Then
+            MsgBox("Accepted")
+            Debug.Print("Debug: accepted")
+        Else
+            MsgBox("Rejected")
+            Debug.Print("Debug: Rejected")
         End If
     End Sub
 End Class

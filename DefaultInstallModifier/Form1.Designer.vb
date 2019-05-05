@@ -36,6 +36,7 @@ Partial Class Form1
         Me.btnWinRestore = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.tmflash = New System.Windows.Forms.Timer(Me.components)
+        Me.btndebug = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'btnChange
@@ -136,11 +137,22 @@ Partial Class Form1
         '
         Me.tmflash.Interval = 30
         '
+        'btndebug
+        '
+        Me.btndebug.Location = New System.Drawing.Point(21, 196)
+        Me.btndebug.Name = "btndebug"
+        Me.btndebug.Size = New System.Drawing.Size(98, 26)
+        Me.btndebug.TabIndex = 10
+        Me.btndebug.Text = "Debug"
+        Me.btndebug.UseVisualStyleBackColor = True
+        Me.btndebug.Visible = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(489, 229)
+        Me.Controls.Add(Me.btndebug)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnWinRestore)
         Me.Controls.Add(Me.btnLocate64)
@@ -174,5 +186,5 @@ Partial Class Form1
     Friend WithEvents btnWinRestore As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents tmflash As System.Windows.Forms.Timer
-
+    Friend WithEvents btndebug As Button
 End Class
