@@ -4,14 +4,14 @@
   <description asmv2:publisher="DefaultInstallModifier" asmv2:product="DefaultInstallModifier" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" />
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="DefaultInstallModifier.exe.manifest" size="4742">
+    <dependentAssembly dependencyType="install" codebase="DefaultInstallModifier.exe.manifest" size="5116">
       <assemblyIdentity name="DefaultInstallModifier.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>jMM/vwmOO10AxEgMHqMoCNXzQbw=</dsig:DigestValue>
+        <dsig:DigestValue>NenyM2FfWIOrOBtZi2dO0A+hIac=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
